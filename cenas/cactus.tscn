@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://csgt4dm0lax5"]
+
+[ext_resource type="Script" uid="uid://cyietpv1ppnuf" path="res://Personagens/Inimigos/Cactus/Script/cacto.gd" id="1_1458n"]
+[ext_resource type="Texture2D" uid="uid://bscqwtuyjl03q" path="res://importados/Mapas - Sprites/Rocky Roads/Enemies/cactus.png" id="2_ah205"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kv73r"]
+size = Vector2(15, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmca2"]
+atlas = ExtResource("2_ah205")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2bjha"]
+atlas = ExtResource("2_ah205")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdaho"]
+atlas = ExtResource("2_ah205")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hlqre"]
+atlas = ExtResource("2_ah205")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_30vml"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmca2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2bjha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wdaho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hlqre")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="CACTO" type="Area2D" groups=["inimigos"]]
+script = ExtResource("1_1458n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 5)
+shape = SubResource("RectangleShape2D_kv73r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_30vml")
+autoplay = "default"
+frame_progress = 0.1410403
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
